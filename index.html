@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Short News | Live World & Local Updates</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Short News</h1>
+    <p class="tagline">Live World & Local Updates</p>
+    
+    <!-- 🔍 Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search news by topic..." />
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#world">World</a></li>
+        <li><a href="#local">Local</a></li>
+        <li><a href="#business">Business</a></li>
+        <li><a href="#tech">Tech</a></li>
+        <li><a href="#subscribe">Subscribe</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="news-container">
+    <section id="search-results" class="news-section hidden">
+      <h2>🔎 Search Results</h2>
+      <div class="news-list" data-category="search"></div>
+    </section>
+
+    <section id="world" class="news-section">
+      <h2>🌍 World News</h2>
+      <div class="news-list" data-category="world"></div>
+    </section>
+
+    <section id="local" class="news-section">
+      <h2>🏙️ Local News</h2>
+      <div class="news-list" data-category="local"></div>
+    </section>
+
+    <section id="business" class="news-section">
+      <h2>💼 Business</h2>
+      <div class="news-list" data-category="business"></div>
+    </section>
+
+    <section id="tech" class="news-section">
+      <h2>🖥️ Technology</h2>
+      <div class="news-list" data-category="tech"></div>
+    </section>
+
+    <section id="subscribe" class="subscribe">
+      <h2>📩 Stay Updated</h2>
+      <p>Subscribe to receive short daily news summaries in your inbox.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Short News. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
