@@ -1,11 +1,11 @@
 // Live news using NewsData.io API
 // Sign up free at https://newsdata.io/ and replace "pub_d53b1cc21a51416ab6b4f20c0a9848cc" with your API key.
 
-const API_KEY = " pub_d53b1cc21a51416ab6b4f20c0a9848cc ";
+const API_KEY = " pub_d53b1cc21a51416ab6b4f20c0a9848cc";
 const BASE_URL = "https://newsdata.io/api/1/news";
 
 async function fetchNews(params, container) {
-  const url = `${BASE_URL}?apikey=${API_KEY}&${params}&language=en`;
+  const url = `${BASE_URL}?apikey=${pub_d53b1cc21a51416ab6b4f20c0a9848cc}&${params}&language=en`;
   try {
     const response = await fetch(url);
     const data = await response.json();
