@@ -1,13 +1,13 @@
 // Live headlines + keyword search using GNews.io API
 // Sign up at 
-https://gnews.io/ "68742387446930499fa5eecb83728eb8";
+https://gnews.io/= "68742387446930499fa5eecb83728eb8";
 
 const API_KEY =
 "68742387446930499fa5eecb83728eb8";
 const BASE_URL = "https://gnews.io/api/v4";
 
 async function fetchNews(endpoint, query, container) {
-  const url = `${BASE_URL}/${endpoint}?q=${encodeURIComponent(query)}&lang=en&max=5&apikey=$"68742387446930499fa5eecb83728eb8";
+  const url = `${BASE_URL}/${endpoint}?q=${encodeURIComponent(query)}&lang=en&max=5&apikey=${"68742387446930499fa5eecb83728eb8"};
   try {
     const response = await fetch(url);
     const data = await response.json();
