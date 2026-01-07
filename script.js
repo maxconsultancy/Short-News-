@@ -1,31 +1,30 @@
-// Live headlines + keyword search using GNews.io API
-// Sign up at 
-https://gnews.io/="68742387446930499fa5eecb83728eb8";
+// Live news using NewsData.io API
+// Sign up free at https://newsdata.io/ and replace YOUR_API_KEY_HERE with your API key.
 
-const API_KEY =
-"68742387446930499fa5eecb83728eb8";
-const BASE_URL = "https://gnews.io/api/v4/" ="68742387446930499fa5eecb83728eb8";
+const API_KEY = "YOUR_API_KEY_HERE";
+const BASE_URL = "https://newsdata.io/api/1/news";
 
-async function fetchNews(endpoint, query, container) {
-  const url = `${BASE_URL}/${endpoint}?q=${encodeURIComponent(query)}&lang=en&max=5&apikey=${"68742387446930499fa5eecb83728eb8"}';
+async function fetchNews(params, container) {
+  const url = `${BASE_URL}?apikey=${API_KEY}&${params}&language=en`;
   try {
     const response = await fetch(url);
     const data = await response.json();
 
-    if (!data.articles || data.articles.length === 0) {
+    if (!data.results || data.results.length === 0) {
       container.innerHTML = "<p>No news found.</p>";
       return;
     }
 
-    container.innerHTML = data.articles.map(article => `
+    container.innerHTML = data.results.slice(0, 5).map(article => `
       <article>
         <h3>${article.title}</h3>
         <p>${article.description || "No description available."}</p>
-        <a href="${article.url}" target="_blank">Read more</a>
+        <a href="${article.link}" target="_blank">Read more</a>
       </article>
     `).join("");
+
   } catch (error) {
-    console.error("Error fetching GNews data:", error);
+    console.error("Error fetching NewsData.io:", error);
     container.innerHTML = "<p>Failed to load news. Please try again later.</p>";
   }
 }
@@ -34,15 +33,15 @@ function loadDefaultNews() {
   const sections = document.querySelectorAll(".news-list");
   sections.forEach(section => {
     const category = section.dataset.category;
-    if (category === "search") return; // skip search section
+    if (category === "search") return;
 
-    let query = "general";
-    if (category === "world") query = "world";
-    if (category === "local") query = "nation";
-    if (category === "business") query = "business";
-    if (category === "tech") query = "technology";
+    let q = "news";
+    if (category === "world") q = "world";
+    if (category === "local") q = "local";
+    if (category === "business") q = "business";
+    if (category === "tech") q = "technology";
 
-    fetchNews("top-headlines", query, section);
+    fetchNews(`q=${q}`, section);
   });
 }
 
@@ -58,11 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const term = searchInput.value.trim();
     if (!term) return;
 
-    // Show search results
     searchResults.classList.remove("hidden");
     searchResults.scrollIntoView({ behavior: "smooth" });
-
     searchContainer.innerHTML = "<p>Loading results...</p>";
-    await fetchNews("search", term, searchContainer);
+
+    await fetchNews(`q=${encodeURIComponent(term)}`, searchContainer);
   });
 });
