@@ -1,5 +1,5 @@
 // Live headlines + keyword search using GNews.io API
-// Sign up at https://gnews.io/ and replace YOUR_API_KEY_HERE with your key.
+// Sign up at https://gnews.io/ 68742387446930499fa5eecb83728eb8 with your key.
 
 const API_KEY ="68742387446930499fa5eecb83728eb8";
 const BASE_URL = "https://gnews.io/api/v4";
